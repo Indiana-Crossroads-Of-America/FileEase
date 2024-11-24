@@ -1,7 +1,50 @@
 # RM Solutions; I:COA Sharepoint
 
+
+### README Before Deploying
+
+This tool is highly configurable and must be tailored to suit your specific infrastructure needs. Proper setup is crucial to ensure it operates securely and efficiently:
+
+---
+
+### Key Features and Requirements
+
+1. **File Sharing Modes**  
+   - Supports both **Permanent** and **Temporary File Sharing** based on the capacity of your storage arrays.
+   - For **Temporary Sharing**, you must:
+     - Implement scheduled tasks (e.g., cron jobs) to run cleanup scripts like `php clean.php`.  
+     - Design a retention policy to decide which files to keep or delete.
+
+2. **Mandatory Configuration**  
+   - **NGINX Configuration**:  
+     - Update `block.nginx` with your Certificate PEM and Private Key.
+     - CertBot is discouraged for this setup. Instead, utilize Cloudflare's Free Strict SSL option, which supports custom SSL configurations tailored for your infrastructure.
+
+   - **serve.php Configuration**:  
+     - Customize `serve.php` to match your Linux ecosystem or infrastructure.  
+     - This file handles routing and the compliance logic of the system. It reads a JSON file (`tos_violations.json`) that defines restricted files, enforcing redirection to a Terms of Service (TOS) file for flagged uploads.
+
+     Example snippet from `serve.php`:
+     ```php
+     $directory = '/srv/mount/files/';
+     $tosFile = __DIR__ . '/tos_violations.json'; // Update to fit your setup
+     ```
+
+---
+
+### Important Warnings
+
+- **Authentication**:  
+  - This tool ships with **no authentication system**. Out of the box, it allows unauthenticated, raw file uploads.  
+  - It is your responsibility to implement an authentication or access control mechanism suitable for your environment.
+
+- **Custom Configuration**:  
+  - Ensure all file paths, security settings, and system dependencies are configured to align with your infrastructure. Misconfiguration may lead to vulnerabilities or unintended access.
+
+Deploy carefully and verify your setup thoroughly to ensure secure and compliant usage.
 # What is SharePoint?
 
+<hr />
 SharePoint is evolving into an **open-source solution**, powered by PHP and Nginx. It features a user-friendly GUI for front-end file uploads, supported by a basic compliance system. The platform optionally leverages Cloudflare's Proxy Firewall to provide enhanced functionality, including exports like `CF-RealIP` and `CF-RayID`. While optional, these features significantly bolster security and improve compliance and logging capabilities over time.
 
 ### File Upload Tool Documentation
@@ -76,15 +119,6 @@ This script is a **configurable file upload system** with restrictions and safeg
      ```
 
 ---
-
-### General Warning:
-- This tool can be configured for **Permanent** or **Temporary File Sharing** based on your infrastructure and the capacity of your storage arrays.  
-- For **Temporary Sharing**, you must implement your own scheduled tasks (e.g., cron jobs) to execute cleanup scripts like `php remove.php`.  
-- You must also esign and define the retention policy to determine which files to delete or retain within your desired timeframe.
-
-
-**It falls on you to configure this to match your Linux Ecosystem and/or infrastructure. There is **absolutely** no authentication system, and out of the box, this system allows unauthenticated, raw uploads.
-
 
 
 
