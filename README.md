@@ -4,7 +4,7 @@
 
 This tool is highly configurable and requires setup tailored to your infrastructure. Proper configuration ensures secure and efficient operation.
 
-**Note**: This tool is designed for advanced users with expertise in PHP, NetStack, and server infrastructure. ⚠️**Important**: It **cannot** operate on shared hosting environments ⚠️. This limitation arises from compliance mechanisms that require server-level configurations, such as request interception and routing, which are typically restricted or unsupported by shared hosting providers due to their structural and security constraints.
+#### **Note**: This tool is designed for advanced users with expertise in PHP, NetStack, and server infrastructure. ⚠️**Important**: It **cannot** operate on shared hosting environments ⚠️. This limitation arises from compliance mechanisms that require server-level configurations, such as request interception and routing, which are typically restricted or unsupported by shared hosting providers due to their structural and security constraints.
 ---
 
 ## Key Features and Requirements
