@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($error)) {
             // Move the uploaded file to the target directory
             if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $targetFile)) {
                 $_SESSION['last_upload_time'] = time();
-                $fileUrl = "https://share.rmsolutions.tech/serve/" . $uniqueFilename;
+                $fileUrl = "domain.tld" . $uniqueFilename;
                 $successMessage = "File uploaded successfully! <a href='$fileUrl' target='_blank'>access here</a>";
             } else {
                 $error = "Sorry, there was an error uploading your file.";
