@@ -2,12 +2,14 @@
 
 ## About SharePoint  
 
-This tool is an **open-source solution** powered by PHP and NGINX, offering an intuitive GUI for file uploads along with advanced compliance features. When integrated with Cloudflare's Proxy Firewall, it provides robust logging and compliance capabilities, including:  
-- Capturing `CF-RealIP` and `CF-RayID` for precise and detailed logs.  
-- Built to be open-source, highly customizable, and scalable for in-house deployment, with the potential to achieve enterprise-level functionality—features that remain partially developed in the current version.
+This **open-source solution**, built with PHP and NGINX, provides an intuitive GUI for file uploads combined with advanced compliance features. When paired with Cloudflare's Proxy Firewall, it ensures robust logging and compliance functionalities, including:
 
+- Capturing `CF-RealIP` and `CF-RayID` for precise, detailed logs.
+- Designed to be open-source, customizable, and scalable for in-house deployment, with enterprise-level capabilities planned for future development.
+- Logging uploaded file names, renaming files (via `index.php`), and tracking the new file name along with the associated RealIP in the log (Index.php).
+- FAL; which collects the RealIP of users trying to access Flagged Images.
 
-#### **Note**: This tool is designed for advanced users with expertise in PHP, NetStack, and server infrastructure. ⚠️**Important**: It **cannot** operate on shared hosting environments ⚠️. This limitation arises from compliance mechanisms that require server-level configurations, such as request interception and routing, which are typically restricted or unsupported by shared hosting providers due to their structural and security constraints.
+##### **Note**: This tool is designed for advanced users with expertise in PHP, NetStack, and server infrastructure. ⚠️**Important**: It **cannot** operate on shared hosting environments ⚠️. This limitation arises from compliance mechanisms that require server-level configurations, such as request interception and routing, which are typically restricted or unsupported by shared hosting providers due to their structural and security constraints.
 ---
 
 ## Key Features and Requirements
@@ -54,7 +56,17 @@ php L4:$tosFile = __DIR__ . '/tos_violations.json'; // Ensure this matches your 
 5. **File Storage**  
    - Saves files in a configurable directory with unique names to avoid overwrites.
    - Generates unique URLs for file access.
+     
+6. **Logging**  
+By default, logs are uploaded to the `/srv/mount/logs` directory, using an HTML File. You can modify this behavior in the `index.php` file by updating the following lines:  
 
+```php
+// Set target directories
+$uploadDir = '/srv/mount/files/';
+$logDir = '/srv/mount/logs/';
+```
+
+##### *Note: Ensure each directory has the appropriate Server/WWW write permissions. Although the client does not require write access, the WebServer must have permissions to create and write HTML files. It is highly recommended to secure access control using HTTP Authentication (HTTPDAuth) or Zero Trust Network Access (ZTNA).*
 ---
 
 ## Configuration Guide
