@@ -5,8 +5,8 @@
 This **open-source solution**, built with PHP and NGINX, provides an intuitive GUI for file uploads using strictly PHP & HTML combined with a basic NGINX-Service Level Traffic Rewrite for Flagged/Banned Images. When paired with Cloudflare's Proxy Firewall, it ensures robust logging functionalities including:
 
 - Capturing `CF-RealIP` and `CF-RayID` for precise, detailed logs.
-- Designed to be open-source, customizable, and scalable for in-house deployment, with enterprise-level capabilities planned for future development.
-- Logging uploaded file names, renaming files (via `index.php`), and tracking the new file name along with the associated RealIP in the log (Index.php).
+- Designed to be open-source, customizable, and scalable for in-house deployment based on Use Case.
+- Logging uploaded file names, renaming files (via `index.php`), and tracking the new file name along with the associated RealIP in logs (Index.php).
 - FAL; which collects the RealIP of users trying to access Flagged Images.
 
 ##### **Note**: This tool is designed for advanced users with expertise in PHP, NetStack, and server infrastructure. ⚠️**Important**: It **cannot** operate on shared hosting environments ⚠️. This limitation arises from compliance mechanisms that require server-level configurations, such as request interception and routing, which are typically restricted or unsupported by shared hosting providers due to their structural and security constraints.
