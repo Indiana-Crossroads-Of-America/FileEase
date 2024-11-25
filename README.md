@@ -25,8 +25,8 @@ This tool is an **open-source solution** powered by PHP and NGINX, offering an i
  
 - **PHP Script Configuration**:  
   - `serve.php` manages everything from the JSON file name and its location to how it processes and intercepts "Processed Compliance Files".
-  - Set the file directory on `php L3:$directory` to the location of your JSON file.  
-  - Set the file name on `php L4:$tosFile` to correspond to your JSON file name.  
+  - Set the file directory on `L3:$directory` to the location of your JSON file.  
+  - Set the file name on `L4:$tosFile` to correspond to your JSON file name.  
 
 ```php
 php L3:$directory = '/srv/mount/files/';
