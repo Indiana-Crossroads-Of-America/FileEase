@@ -1,8 +1,11 @@
 # RM Solutions: I:COA SharePoint
 
-## Deployment Guide
+## About SharePoint  
 
-This tool is highly configurable and requires setup tailored to your infrastructure. Proper configuration ensures secure and efficient operation.
+This tool is an **open-source solution** powered by PHP and NGINX, offering an intuitive GUI for file uploads along with advanced compliance features. When integrated with Cloudflare's Proxy Firewall, it provides robust logging and compliance capabilities, including:  
+- Capturing `CF-RealIP` and `CF-RayID` for precise and detailed logs.  
+- Built to be open-source, highly customizable, and scalable for in-house deployment, with the potential to achieve enterprise-level functionality—features that remain partially developed in the current version.
+
 
 #### **Note**: This tool is designed for advanced users with expertise in PHP, NetStack, and server infrastructure. ⚠️**Important**: It **cannot** operate on shared hosting environments ⚠️. This limitation arises from compliance mechanisms that require server-level configurations, such as request interception and routing, which are typically restricted or unsupported by shared hosting providers due to their structural and security constraints.
 ---
@@ -12,43 +15,23 @@ This tool is highly configurable and requires setup tailored to your infrastruct
 ### File Sharing Modes
 - **Permanent and Temporary File Sharing**:
   - Temporary sharing requires:
-    - Scheduled tasks (e.g., cron jobs) to run cleanup scripts like `php clean.php`.
-    - A defined retention policy to manage file cleanup.
+    - Scheduled tasks (e.g., cron jobs) to run cleanup scripts like `php clean.php` (Standard PHP Script for 1W/7D).
 
 ### Mandatory Configuration
 - **NGINX Configuration**:
   - Update the `block.nginx` file with your Certificate PEM and Private Key.
   - Deploy these configurations to your NGINX ecosystem.
-  - Avoid CertBot; instead, use Cloudflare's Free Strict SSL for custom SSL setups.
+  - Avoid using CertBot; instead, leverage Cloudflare's free Strict SSL to enable features like `RayID` and `RealIP` via their Proxy Infrastructure.
+ 
+- **PHP Script Configuration**:  
+  - `serve.php` manages everything from the JSON file name and its location to how it processes and intercepts "Processed Compliance Files".
+  - Set the file directory on `php L3:$directory` to the location of your JSON file.  
+  - Set the file name on `php L4:$tosFile` to correspond to your JSON file name.  
 
-- **PHP Script Configuration**:
-  - Customize `serve.php` to align with your Linux environment and infrastructure.
-  - The script reads a JSON file (`tos_violations.json`) to enforce compliance by managing restricted files.
-
-  Example configuration:
-  - Set the file directory to `/srv/mount/files/`.
-  - Use `tos_violations.json` for compliance handling.
-
----
-
-## Warnings and Disclaimers
-
-### Authentication
-- Out of the box, this tool has **no authentication system**. File uploads are unauthenticated by default.
-- You must implement authentication or access control mechanisms for your environment.
-
-### Custom Configuration
-- Misconfigurations in file paths, security settings, or dependencies may lead to vulnerabilities or unauthorized access.
-- Validate all settings to ensure a secure deployment.
-
----
-
-## About SharePoint
-
-This tool is an **open-source solution** powered by PHP and NGINX. It provides a user-friendly GUI for file uploads and supports compliance features. When combined with Cloudflare's Proxy Firewall, it enables advanced logging and compliance capabilities, such as:
-- Capturing `CF-RealIP` and `CF-RayID` for enhanced logging.
-- Supporting stricter security measures over time.
-
+```php
+php L3:$directory = '/srv/mount/files/';
+php L4:$tosFile = __DIR__ . '/tos_violations.json'; // Ensure this matches your setup
+```
 ---
 
 ## Features
@@ -97,6 +80,10 @@ Edit the list of restricted file extensions to suit your needs. For example:
 
 ---
 
-## Final Notes
 
-This tool is provided **as-is**, with no official support. Community contributions are encouraged to improve the project over time. Ensure careful deployment and thorough validation of configurations to secure your environment.
+## About SharePoint
+
+This tool is an **open-source solution** powered by PHP and NGINX. It provides a user-friendly GUI for file uploads and supports compliance features. When combined with Cloudflare's Proxy Firewall, it enables advanced logging and compliance capabilities, such as:
+- Capturing `CF-RealIP` and `CF-RayID` for enhanced logging.
+- Supporting stricter security measures over time.
+- This tool is provided **as-is**, with no official support. Community contributions are encouraged to improve the project over time. Ensure careful deployment and thorough validation of configurations to secure your environment.
