@@ -2,7 +2,7 @@
 
 ## About SharePoint  
 
-This **open-source solution**, built with PHP and NGINX, provides an intuitive GUI for file uploads combined with advanced compliance features. When paired with Cloudflare's Proxy Firewall, it ensures robust logging and compliance functionalities, including:
+This **open-source solution**, built with PHP and NGINX, provides an intuitive GUI for file uploads using strictly PHP & HTML combined with a basic NGINX-Service Level Traffic Rewrite for Flagged/Banned Images. When paired with Cloudflare's Proxy Firewall, it ensures robust logging functionalities including:
 
 - Capturing `CF-RealIP` and `CF-RayID` for precise, detailed logs.
 - Designed to be open-source, customizable, and scalable for in-house deployment, with enterprise-level capabilities planned for future development.
