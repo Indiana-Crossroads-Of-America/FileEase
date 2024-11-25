@@ -1,6 +1,7 @@
-# RM Solutions: I:COA SharePoint
+# RM Solutions: I:COA FileEase
 
-## About SharePoint  
+## About FileEase
+  
 
 This **open-source solution**, built with PHP and NGINX, provides an intuitive GUI for file uploads using strictly PHP & HTML combined with a basic NGINX-Service Level Traffic Rewrite for Flagged/Banned Images. When paired with Cloudflare's Proxy Firewall, it ensures robust logging functionalities including:
 
