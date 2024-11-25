@@ -93,9 +93,4 @@ Edit the list of restricted file extensions to suit your needs. For example:
 ---
 
 
-## About SharePoint
-
-This tool is an **open-source solution** powered by PHP and NGINX. It provides a user-friendly GUI for file uploads and supports compliance features. When combined with Cloudflare's Proxy Firewall, it enables advanced logging and compliance capabilities, such as:
-- Capturing `CF-RealIP` and `CF-RayID` for enhanced logging.
-- Supporting stricter security measures over time.
-- This tool is provided **as-is**, with no official support. Community contributions are encouraged to improve the project over time. Ensure careful deployment and thorough validation of configurations to secure your environment.
+#### __This tool is provided **as-is**, with no official support. Community contributions are encouraged to improve the project over time. Ensure careful deployment and thorough validation of configurations to secure your environment__.
